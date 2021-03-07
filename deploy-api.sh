@@ -33,15 +33,15 @@ mkdir dist
 # Efetua a compilação do projeto
 #############################################################################################
 
-echo "Compilando o projeto $PROJECT_NAME:$PROJECT_VERSION, por favor aguarde..."
-sh -c "exec mvn clean compile install -DskipTests=$MVN_SKIP_TESTS"
+#echo "Compilando o projeto $PROJECT_NAME:$PROJECT_VERSION, por favor aguarde..."
+#sh -c "exec mvn clean compile install -DskipTests=$MVN_SKIP_TESTS"
 
-return_code=$?
+#return_code=$?
 
-if [ $return_code -ne 0 ]; then
-	echo "Falha na compilação do projeto => Erro : $return_code"
-	exit $return_code
-fi
+#if [ $return_code -ne 0 ]; then
+#	echo "Falha na compilação do projeto => Erro : $return_code"
+#	exit $return_code
+#fi
 
 #############################################################################################
 # Copia os arquivos para o diretório de distribuição
