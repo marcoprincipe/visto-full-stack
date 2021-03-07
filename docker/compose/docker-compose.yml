@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+
+   visto-mysql:
+      image: visto-mysql:v1
+      ports:
+      - "3306:3306"
+      environment:
+      - MYSQL_ROOT_PASSWORD=M@pg2E07
+      networks:
+      - visto-network
+
+   visto-rabbitmq:
+      image: rabbitmq:3-management
+      depends_on:
+      - "visto-mysql"
+      ports:
+      - "5672:5672"
+      - "8081:15672"
+      networks:
+      - visto-network
+
+   visto-api:
+      image: visto-api:v1
+      depends_on:
+      - "visto-rabbitmq"
+      environment:
+      - VISTO_MYSQL_HOST=visto-mysql
+      - VISTO_MYSQL_PORT=3306
+      - VISTO_MYSQL_DB=visto_db
+      - VISTO_MYSQL_USER=visto_user
+      - VISTO_MYSQL_PASSWORD:M@pg2E07
+      - VISTO_RABBITMQ_HOST=visto-rabbitmq
+      - VISTO_RABBITMQ_PORT=5672
+      - VISTO_RABBITMQ_QUEUE=visto-queue
+      ports:
+      - "8080:8080"
+      networks:
+      - visto-network
+      
+networks:
+
+   visto-network:
+      driver: bridge
+
