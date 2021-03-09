@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
    visto-mysql:
-      image: visto-mysql:v1
+      image: mysql:latest
       ports:
       - "3306:3306"
       environment:
