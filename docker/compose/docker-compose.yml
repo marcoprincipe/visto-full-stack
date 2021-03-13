@@ -26,6 +26,7 @@ services:
       depends_on:
       - "visto-rabbitmq"
       environment:
+      - VISTO_API_PORT=8083
       - VISTO_MYSQL_HOST=visto-mysql
       - VISTO_MYSQL_PORT=3306
       - VISTO_MYSQL_DB=visto_db
@@ -43,6 +44,8 @@ services:
       image: visto-view:v1
       depends_on:
       - "visto-api"
+      environment:
+      - VISTO_API_PORT=8083
       ports:
       - "3000:3000"
       networks:
