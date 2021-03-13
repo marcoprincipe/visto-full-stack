@@ -39,6 +39,15 @@ services:
       networks:
       - visto-network
       
+   visto-view:
+      image: visto-view:v1
+      depends_on:
+      - "visto-api"
+      ports:
+      - "3000:3000"
+      networks:
+      - visto-network
+      
 networks:
 
    visto-network:
