@@ -36,7 +36,7 @@ services:
       - VISTO_RABBITMQ_PORT=5672
       - VISTO_RABBITMQ_QUEUE=visto-queue
       ports:
-      - "8081:8081"
+      - "8083:8083"
       networks:
       - visto-network
       
